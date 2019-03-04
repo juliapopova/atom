@@ -25,11 +25,11 @@ public class Util {
      * @return the largest of values.
      */
     public static int max(int[] values) {
-        int Max = values[0];
+        int maxvalue = values[0];
         for (int i = 1; i < values.length; i++)
-            if (Max < values[i])
-                Max = values[i];
-        return Max;
+            if (maxvalue < values[i])
+                maxvalue = values[i];
+        return maxvalue;
         //throw new UnsupportedOperationException();
     }
 
