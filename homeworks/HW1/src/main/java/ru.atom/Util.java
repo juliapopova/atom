@@ -42,7 +42,7 @@ public class Util {
     public static long sum(int[] values) {
         long summ = 0;
         for (int i = 0; i < values.length; i++)
-            summ+=values[i];
+            summ += values[i];
         return summ;
         //throw new UnsupportedOperationException();
     }
