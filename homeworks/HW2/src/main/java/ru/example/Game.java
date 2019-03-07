@@ -11,18 +11,32 @@ import java.util.Scanner;
 
 public class Game {
 
-    public static void main (String[] argc)
-    {
+    public static void main(String[] argc) {
         System.out.println("Welcome to Bulls and Cows game!");
-        String wordGame = newWord();
-        Scanner in = new Scanner(System.in);
-        System.out.println(wordGame);
-        System.out.println("The word have " + wordGame.length() + " letters");
-        System.out.println("Good luck!");
+        mainGame();
     }
 
-    public static String newWord ()
-    {
+    public static void mainGame() {
+        while (true) {
+            String wordGame = newWord();
+            System.out.println(wordGame);
+            System.out.println("The word have " + wordGame.length() + " letters");
+            System.out.println("Good luck!");
+            Scanner in = new Scanner(System.in);
+            System.out.println("Enter your word: ");
+            String wordPlayer = in.nextLine();
+            while (wordPlayer.length() != wordGame.length()) {
+                System.out.println("Enter word again!");
+                wordPlayer = in.nextLine();
+            }
+            int bulls = countBulls(wordPlayer, wordGame);
+//        int cows = countCows(wordPlayer, wordGame);
+//        System.out.println("Count bulls is " + bulls + ". Count cows is " + cows);
+        }
+
+    }
+
+    public static String newWord() {
 
         ArrayList<String> dictionary = new ArrayList<String>();
         String line;
@@ -48,13 +62,49 @@ public class Game {
         return dictionary.get(randIndex);
     }
 
-    public static int countBulls (String wordPlayer, String wordGame)
-    {
-        int count = 0;
-        for (int i = 0; i < wordGame.length(); i++)
-            if (wordGame.charAt(i) == wordPlayer.charAt(i))
-                count++;
+/*    public static int countBulls(String wordPlayer, String wordGame) {
+        int countB = 0, countC = 0;
+        boolean flag;
+        char letter;
+        for (int i = 0; i < wordGame.length(); i++) {
+            letter = wordPlayer.charAt(i);
+            if (wordGame.indexOf(letter) != -1) {
+                if (wordGame.charAt(i) == wordPlayer.charAt(i))
+                    countB++;
+                else {
+                    flag = true;
+                    for (int j = i; j < wordGame.length(); j++) {
+                        if (wordPlayer.charAt(i) == wordGame.charAt(j)) {
+                            flag = false;
+                            break;
+                        }
+                    }
 
-        return count;
+                    if (flag)
+                        countC++;
+                }
+            }
+
+
+        }
+
+        System.out.println("Count bulls is " + countB + ". Count cows is " + countC);
+        return 0;
     }
+
+    public static int countCows (String wordPlayer, String wordGame)
+    {
+        char letter;
+        int count = 0;
+        for (int i = 0; i < wordPlayer.length(); i++)
+        {
+            letter = wordPlayer.charAt(i);
+            if (wordGame.indexOf(letter) != -1)
+                for (int j = 0; j < wordGame.length(); j++)
+                {
+
+                }
+        }
+        return count;
+    }*/
 }
