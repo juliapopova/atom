@@ -51,7 +51,7 @@ public class Game {
             if (count == 10) {
                 log.info("Player loose");
                 System.out.println("You loose! :( exexexexe");
-                System.out.println("Right word is "+ wordGame);
+                System.out.println("Right word is " + wordGame);
             }
 
 
