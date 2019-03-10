@@ -17,23 +17,37 @@ public class Game {
     }
 
     public static void mainGame() {
-        while (true) {
+        char choose;
+        do {
             String wordGame = newWord();
             System.out.println(wordGame);
             System.out.println("The word have " + wordGame.length() + " letters");
+            System.out.println("You have 10 attempts");
             System.out.println("Good luck!");
             Scanner in = new Scanner(System.in);
-            System.out.println("Enter your word: ");
-            String wordPlayer = in.nextLine();
-            while (wordPlayer.length() != wordGame.length()) {
-                System.out.println("Enter word again!");
-                wordPlayer = in.nextLine();
-            }
-            int bulls = countBulls(wordPlayer, wordGame);
-//        int cows = countCows(wordPlayer, wordGame);
-//        System.out.println("Count bulls is " + bulls + ". Count cows is " + cows);
-        }
+            int bulls;
+            int count = 0;
+            do {
+                System.out.println("Enter your word: ");
+                String wordPlayer = in.nextLine();
+                while (wordPlayer.length() != wordGame.length()) {
+                    System.out.println("Enter word again!");
+                    wordPlayer = in.nextLine();
+                }
+                bulls = countBulls(wordPlayer, wordGame);
+                int cows = countCows(wordPlayer, wordGame);
+                if (bulls == wordGame.length())
+                    System.out.println("You win!!!");
+                else
+                    System.out.println("Count bulls is " + bulls + ". Count cows is " + cows);
+                count++;
+            } while (bulls != wordGame.length() && count != 10);
+            if (count == 10)
+                System.out.println("You loose! :( exexexexe");
 
+            System.out.println("Repeat? (y/n): ");
+            choose = in.next().charAt(0);
+        } while (choose == 'y');
     }
 
     public static String newWord() {
@@ -62,49 +76,47 @@ public class Game {
         return dictionary.get(randIndex);
     }
 
-/*    public static int countBulls(String wordPlayer, String wordGame) {
-        int countB = 0, countC = 0;
-        boolean flag;
-        char letter;
-        for (int i = 0; i < wordGame.length(); i++) {
-            letter = wordPlayer.charAt(i);
-            if (wordGame.indexOf(letter) != -1) {
-                if (wordGame.charAt(i) == wordPlayer.charAt(i))
-                    countB++;
-                else {
-                    flag = true;
-                    for (int j = i; j < wordGame.length(); j++) {
-                        if (wordPlayer.charAt(i) == wordGame.charAt(j)) {
-                            flag = false;
-                            break;
-                        }
-                    }
-
-                    if (flag)
-                        countC++;
-                }
-            }
-
-
-        }
-
-        System.out.println("Count bulls is " + countB + ". Count cows is " + countC);
-        return 0;
-    }
-
-    public static int countCows (String wordPlayer, String wordGame)
-    {
-        char letter;
+    public static int countBulls(String wordPlayer, String wordGame) {
         int count = 0;
-        for (int i = 0; i < wordPlayer.length(); i++)
-        {
-            letter = wordPlayer.charAt(i);
-            if (wordGame.indexOf(letter) != -1)
-                for (int j = 0; j < wordGame.length(); j++)
-                {
-
-                }
+        for (int i = 0; i < wordGame.length(); i++) {
+            if (wordGame.charAt(i) == wordPlayer.charAt(i))
+                count++;
         }
         return count;
-    }*/
+    }
+
+    public static int countCows(String wordPlayer, String wordGame) {
+        char letter;
+        int count = 0;
+        boolean[] flagGame;
+        boolean[] flagPlayer;
+
+        flagGame = new boolean[wordGame.length()];
+        flagPlayer = new boolean[wordPlayer.length()];
+        for (int i = 0; i < wordGame.length(); i++) {
+            if (wordGame.charAt(i) == wordPlayer.charAt(i)) {
+                flagGame[i] = false;
+                flagPlayer[i] = false;
+            } else {
+                flagGame[i] = true;
+                flagPlayer[i] = true;
+            }
+
+        }
+        for (int i = 0; i < wordPlayer.length(); i++) {
+            letter = wordPlayer.charAt(i);
+            if (wordGame.indexOf(letter) != -1 && flagPlayer[i]) {
+                for (int j = 0; j < wordGame.length(); j++) {
+                    //System.out.println("G[" + j + "] = " + wordGame.charAt(j) + " P[" + i + "] = " + wordPlayer.charAt(i) + " cows = " + count + " flagGame[" + j + "] = " + flagGame[j]);
+                    if (letter == wordGame.charAt(j) && flagGame[j]) {
+                        flagPlayer[i] = false;
+                        flagGame[j] = false;
+                        count++;
+                        break;
+                    }
+                }
+            }
+        }
+        return count;
+    }
 }
