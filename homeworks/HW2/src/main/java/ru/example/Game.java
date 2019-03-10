@@ -9,9 +9,13 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Scanner;
 
+import org.slf4j.LoggerFactory;
+
 public class Game {
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(Game.class);
 
     public static void main(String[] argc) {
+        log.info("Game started");
         System.out.println("Welcome to Bulls and Cows game!");
         mainGame();
     }
@@ -20,7 +24,7 @@ public class Game {
         char choose;
         do {
             String wordGame = newWord();
-            System.out.println(wordGame);
+            log.info("Get word " + wordGame);
             System.out.println("The word have " + wordGame.length() + " letters");
             System.out.println("You have 10 attempts");
             System.out.println("Good luck!");
@@ -31,23 +35,30 @@ public class Game {
                 System.out.println("Enter your word: ");
                 String wordPlayer = in.nextLine();
                 while (wordPlayer.length() != wordGame.length()) {
+                    log.info("Enter is wrong");
                     System.out.println("Enter word again!");
                     wordPlayer = in.nextLine();
                 }
                 bulls = countBulls(wordPlayer, wordGame);
                 int cows = countCows(wordPlayer, wordGame);
-                if (bulls == wordGame.length())
+                if (bulls == wordGame.length()) {
+                    log.info("Player win");
                     System.out.println("You win!!!");
-                else
+                } else
                     System.out.println("Count bulls is " + bulls + ". Count cows is " + cows);
                 count++;
             } while (bulls != wordGame.length() && count != 10);
-            if (count == 10)
+            if (count == 10) {
+                log.info("Player loose");
                 System.out.println("You loose! :( exexexexe");
+                System.out.println("Right word is "+ wordGame);
+            }
+
 
             System.out.println("Repeat? (y/n): ");
             choose = in.next().charAt(0);
         } while (choose == 'y');
+        log.info("Game over");
     }
 
     public static String newWord() {
@@ -83,6 +94,7 @@ public class Game {
             if (wordGame.charAt(i) == wordPlayer.charAt(i))
                 count++;
         }
+        log.info("Player's word have " + count + " bulls");
         return count;
     }
 
@@ -117,6 +129,7 @@ public class Game {
                 }
             }
         }
+        log.info("Player's word have " + count + " cows");
         return count;
     }
 }

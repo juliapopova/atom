@@ -1,0 +1,26 @@
+2019-03-10 22:07:53.800 INFO [main] [ru.example.Game] [main] [ru.example.Game.main(Game.java:18)] - Game started
+2019-03-10 22:07:53.852 INFO [main] [ru.example.Game] [mainGame] [ru.example.Game.mainGame(Game.java:27)] - Get word cordis
+2019-03-10 22:08:10.676 INFO [main] [ru.example.Game] [mainGame] [ru.example.Game.mainGame(Game.java:38)] - Enter is wrong
+2019-03-10 22:08:27.581 INFO [main] [ru.example.Game] [countBulls] [ru.example.Game.countBulls(Game.java:96)] - Player's word have 1 bulls
+2019-03-10 22:08:27.581 INFO [main] [ru.example.Game] [countCows] [ru.example.Game.countCows(Game.java:131)] - Player's word have 1 cows
+2019-03-10 22:08:49.079 INFO [main] [ru.example.Game] [countBulls] [ru.example.Game.countBulls(Game.java:96)] - Player's word have 0 bulls
+2019-03-10 22:08:49.079 INFO [main] [ru.example.Game] [countCows] [ru.example.Game.countCows(Game.java:131)] - Player's word have 1 cows
+2019-03-10 22:09:06.791 INFO [main] [ru.example.Game] [countBulls] [ru.example.Game.countBulls(Game.java:96)] - Player's word have 0 bulls
+2019-03-10 22:09:06.806 INFO [main] [ru.example.Game] [countCows] [ru.example.Game.countCows(Game.java:131)] - Player's word have 1 cows
+2019-03-10 22:09:25.284 INFO [main] [ru.example.Game] [countBulls] [ru.example.Game.countBulls(Game.java:96)] - Player's word have 1 bulls
+2019-03-10 22:09:25.284 INFO [main] [ru.example.Game] [countCows] [ru.example.Game.countCows(Game.java:131)] - Player's word have 0 cows
+2019-03-10 22:09:49.352 INFO [main] [ru.example.Game] [mainGame] [ru.example.Game.mainGame(Game.java:38)] - Enter is wrong
+2019-03-10 22:09:53.146 INFO [main] [ru.example.Game] [countBulls] [ru.example.Game.countBulls(Game.java:96)] - Player's word have 0 bulls
+2019-03-10 22:09:53.146 INFO [main] [ru.example.Game] [countCows] [ru.example.Game.countCows(Game.java:131)] - Player's word have 0 cows
+2019-03-10 22:10:02.661 INFO [main] [ru.example.Game] [countBulls] [ru.example.Game.countBulls(Game.java:96)] - Player's word have 1 bulls
+2019-03-10 22:10:02.661 INFO [main] [ru.example.Game] [countCows] [ru.example.Game.countCows(Game.java:131)] - Player's word have 0 cows
+2019-03-10 22:10:56.583 INFO [main] [ru.example.Game] [countBulls] [ru.example.Game.countBulls(Game.java:96)] - Player's word have 2 bulls
+2019-03-10 22:10:56.583 INFO [main] [ru.example.Game] [countCows] [ru.example.Game.countCows(Game.java:131)] - Player's word have 0 cows
+2019-03-10 22:11:17.879 INFO [main] [ru.example.Game] [countBulls] [ru.example.Game.countBulls(Game.java:96)] - Player's word have 1 bulls
+2019-03-10 22:11:17.879 INFO [main] [ru.example.Game] [countCows] [ru.example.Game.countCows(Game.java:131)] - Player's word have 0 cows
+2019-03-10 22:11:34.671 INFO [main] [ru.example.Game] [countBulls] [ru.example.Game.countBulls(Game.java:96)] - Player's word have 3 bulls
+2019-03-10 22:11:34.671 INFO [main] [ru.example.Game] [countCows] [ru.example.Game.countCows(Game.java:131)] - Player's word have 0 cows
+2019-03-10 22:12:04.556 INFO [main] [ru.example.Game] [countBulls] [ru.example.Game.countBulls(Game.java:96)] - Player's word have 2 bulls
+2019-03-10 22:12:04.556 INFO [main] [ru.example.Game] [countCows] [ru.example.Game.countCows(Game.java:131)] - Player's word have 2 cows
+2019-03-10 22:12:04.556 INFO [main] [ru.example.Game] [mainGame] [ru.example.Game.mainGame(Game.java:52)] - Player loose
+2019-03-10 22:12:14.241 INFO [main] [ru.example.Game] [mainGame] [ru.example.Game.mainGame(Game.java:60)] - Game over
