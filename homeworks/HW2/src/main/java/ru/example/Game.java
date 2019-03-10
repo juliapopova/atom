@@ -76,6 +76,7 @@ public class Game {
         return dictionary.get(randIndex);
     }
 
+
     public static int countBulls(String wordPlayer, String wordGame) {
         int count = 0;
         for (int i = 0; i < wordGame.length(); i++) {
@@ -107,7 +108,6 @@ public class Game {
             letter = wordPlayer.charAt(i);
             if (wordGame.indexOf(letter) != -1 && flagPlayer[i]) {
                 for (int j = 0; j < wordGame.length(); j++) {
-                    //System.out.println("G[" + j + "] = " + wordGame.charAt(j) + " P[" + i + "] = " + wordPlayer.charAt(i) + " cows = " + count + " flagGame[" + j + "] = " + flagGame[j]);
                     if (letter == wordGame.charAt(j) && flagGame[j]) {
                         flagPlayer[i] = false;
                         flagGame[j] = false;
