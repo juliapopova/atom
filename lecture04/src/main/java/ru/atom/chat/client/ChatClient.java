@@ -9,7 +9,7 @@ import okhttp3.Response;
 
 import java.io.IOException;
 
-
+//ChatClient class
 public class ChatClient {
     private static final OkHttpClient client = new OkHttpClient();
     private static final String PROTOCOL = "http://";
