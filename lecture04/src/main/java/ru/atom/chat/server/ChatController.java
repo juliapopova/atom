@@ -76,15 +76,14 @@ public class ChatController {
     /**
      * curl -X POST -i localhost:8080/chat/say -d "name=I_AM_STUPID&msg=Hello everyone in this chat"
      */
-    //TODO
     @RequestMapping(
             path = "say",
             method = RequestMethod.POST,
-            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> say (@RequestParam("name") String name, @RequestParam ("msg") String msg) {
+            produces = MediaType.TEXT_PLAIN_VALUE
+    )
+    public ResponseEntity say(@RequestParam("name") String name, @RequestParam("msg") String msg) {
         if (usersOnline.containsKey(name)) {
-            messages.add("[" + name + "]: "+ msg);
+            messages.add("[" + name + "] " + msg);
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.badRequest().body("User with this login does not exist :(");
@@ -94,5 +93,15 @@ public class ChatController {
     /**
      * curl -i localhost:8080/chat/chat
      */
-    //TODO
+    @RequestMapping(
+            path = "chat",
+            method = RequestMethod.GET,
+            produces = MediaType.TEXT_PLAIN_VALUE)
+    public ResponseEntity chat() {
+        String responseBody = String.join("\n", messages);
+        return ResponseEntity.ok(responseBody);
+    }
+
+
 }
+
