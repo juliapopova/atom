@@ -110,7 +110,8 @@ public class ChatController {
             method = RequestMethod.POST,
             produces = MediaType.TEXT_PLAIN_VALUE
     )
-    public ResponseEntity answer(@RequestParam("nameY") String nameY, @RequestParam("nameA") String nameA, @RequestParam("msg") String msg) {
+    public ResponseEntity answer(@RequestParam("nameY") String nameY, @RequestParam("nameA") String nameA,
+                                 @RequestParam("msg") String msg) {
         if (!usersOnline.containsKey(nameY)) {
             return ResponseEntity.badRequest().body("User with this login " + nameY + " does not exist :(");
         }
