@@ -23,7 +23,6 @@ public class ChatClient {
                 .post(RequestBody.create(mediaType, ""))
                 .url(PROTOCOL + HOST + PORT + "/chat/login?name=" + name)
                 .build();
-
         return client.newCall(request).execute();
     }
 
@@ -54,6 +53,24 @@ public class ChatClient {
                 .get()
                 .url(PROTOCOL + HOST + PORT + "/chat/online")
                 .addHeader("host", HOST + PORT)
+                .build();
+        return client.newCall(request).execute();
+    }
+
+
+    public static Response answer(String nameY, String nameA, String msg) throws IOException {
+        MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+        Request request = new Request.Builder()
+                .post(RequestBody.create(mediaType, "msg=" + msg))
+                .url(PROTOCOL + HOST + PORT + "/chat/answer?nameY=" + nameY + "&nameA=" + nameA)
+                .build();
+        return client.newCall(request).execute();
+    }
+
+    public static Response clear() throws IOException {
+        Request request = new Request.Builder()
+                .delete()
+                .url(PROTOCOL + HOST + PORT + "/chat/clear")
                 .build();
         return client.newCall(request).execute();
     }

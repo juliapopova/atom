@@ -46,8 +46,29 @@ public class ChatClientTest {
 
     @Test
     public void say() throws IOException {
-        ChatClient.login(MY_NAME_IN_CHAT);
-        Response response = ChatClient.say(MY_NAME_IN_CHAT, MY_MESSAGE_TO_CHAT);
+        ChatClient.login("MyLogin");
+        Response response = ChatClient.say("MyLogin", MY_MESSAGE_TO_CHAT);
+        System.out.println("[" + response + "]");
+        System.out.println(response.body().string());
+        Assert.assertEquals(200, response.code());
+    }
+
+    @Test
+    public void answer() throws IOException {
+        ChatClient.login("MyLogin1");
+        ChatClient.login("MyLogin2");
+        Response response = ChatClient.answer("MyLogin1", "MyLogin2", MY_MESSAGE_TO_CHAT);
+        System.out.println("[" + response + "]");
+        System.out.println(response.body().string());
+        Assert.assertEquals(200, response.code());
+    }
+
+    @Test
+    public void clear() throws IOException {
+        ChatClient.login("MyLogin1");
+        ChatClient.login("MyLogin2");
+        ChatClient.answer("MyLogin1", "MyLogin2", MY_MESSAGE_TO_CHAT);
+        Response response = ChatClient.clear();
         System.out.println("[" + response + "]");
         System.out.println(response.body().string());
         Assert.assertEquals(200, response.code());

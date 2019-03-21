@@ -102,6 +102,40 @@ public class ChatController {
         return ResponseEntity.ok(responseBody);
     }
 
+    /**
+     * curl -X POST -i localhost:8080/chat/say -d "nameY=I_AM_STUPID&nameA=I_AM_STUPID2&msg=Hello everyone in this chat"
+     */
+    @RequestMapping(
+            path = "answer",
+            method = RequestMethod.POST,
+            produces = MediaType.TEXT_PLAIN_VALUE
+    )
+    public ResponseEntity answer(@RequestParam("nameY") String nameY, @RequestParam("nameA") String nameA, @RequestParam("msg") String msg) {
+        if (!usersOnline.containsKey(nameY)) {
+            return ResponseEntity.badRequest().body("User with this login " + nameY + " does not exist :(");
+        }
+
+        if (!usersOnline.containsKey(nameA)) {
+            return ResponseEntity.badRequest().body("User with this login " + nameA + " does not exist :(");
+        }
+        messages.add("[" + nameY + "] @" + nameA + " " + msg);
+        return ResponseEntity.ok().build();
+    }
+
+    /**
+     * curl -X DELETE -i localhost:8080/chat/clear
+     */
+    @RequestMapping(
+            path = "clear",
+            method = RequestMethod.DELETE,
+            produces = MediaType.TEXT_PLAIN_VALUE
+    )
+    public ResponseEntity clear() {
+        messages.clear();
+        String responseBody = String.join("\n", "Chat is clear");
+        return ResponseEntity.ok(responseBody);
+
+    }
 
 }
 
