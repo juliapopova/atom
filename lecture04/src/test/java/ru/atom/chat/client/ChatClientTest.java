@@ -20,7 +20,9 @@ import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.core.StringContains.containsString;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -37,7 +39,9 @@ public class ChatClientTest {
 
     @Test
     public void login() throws Exception {
-        this.mockMvc.perform(post("/chat/login").param("name", "MyLogin").contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
+        this.mockMvc.perform(post("/chat/login")
+                .param("name", "MyLogin")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
