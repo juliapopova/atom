@@ -26,6 +26,15 @@ public class ChatClient {
         return client.newCall(request).execute();
     }
 
+    public static Response logout(String name) throws IOException {
+        MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+        Request request = new Request.Builder()
+                .post(RequestBody.create(mediaType, "name=" + name))
+                .url(PROTOCOL + HOST + PORT + "/chat/logout")
+                .build();
+        return client.newCall(request).execute();
+    }
+
     //GET host:port/chat/chat
     public static Response viewChat() throws IOException {
         Request request = new Request.Builder()

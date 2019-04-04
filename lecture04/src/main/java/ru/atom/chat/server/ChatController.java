@@ -103,7 +103,7 @@ public class ChatController {
     }
 
     /**
-     * curl -X POST -i localhost:8080/chat/say -d "nameY=I_AM_STUPID&nameA=I_AM_STUPID2&msg=Hello everyone in this chat"
+     * curl -X POST -i localhost:8080/chat/answer -d "nameY=I_AM_STUPID&nameA=I_AM_STUPID2&msg=Hello everyone in this chat"
      */
     @RequestMapping(
             path = "answer",
